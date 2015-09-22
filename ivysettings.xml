@@ -1,0 +1,52 @@
+<ivysettings>
+<settings defaultResolver="allResolvers" ></settings>
+	<resolvers>
+	
+	
+		<chain name="allResolvers" returnFirst="true">
+	
+		    <filesystem name="local_repo" m2compatible="true">
+	       		<ivy pattern="${user.home}/repository/[organisation]/[module]/[revision]/ivy-[revision](-[classifier]).xml"></ivy>
+	   			<artifact pattern="${user.home}/repository/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"></artifact>
+			</filesystem>
+	
+	
+	
+			<!-- These are the repositories to install from to local_repo -->
+			<chain name="remoteResolvers" returnFirst="false">
+	  
+	  			<!-- local filesystem that mimics maven setup to dump roslin stuff in and pick up from -->    	
+	   	  		<!--
+	   	  		This took ages to figure out. Instead of a filesystem, use ibiblio and a root that
+	   	  		takes in a file: (not file://) prefix to mimic a maven repository. This will allow sources,
+	   	  		javadocs and transitive jars to be picked up, which wasn't happening in the filesystem version.
+	   	  		-->
+	   	  		<ibiblio name="dummy" m2compatible="true" root="file:${user.home}/mav_repository"
+	   				pattern="[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+	   	  
+	   	  		<filesystem name="libraries" m2compatible="true">      
+		    		<ivy pattern="I:/repository/[organisation]/[module]/[revision]/ivy-[revision](-[classifier]).xml"></ivy>
+	   				<artifact pattern="I:/repository/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+	   			</filesystem>
+	   	  
+	    		<ibiblio name="repo2" m2compatible="true" root="http://repo2.maven.org/maven2/"
+	   				pattern="[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+	    		<ibiblio name="ibiblio" />  
+	    		<ibiblio name="jboss" m2compatible="true" root="http://repository.jboss.com/maven2/"
+	   				pattern="[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+	   			<ibiblio name="java-net" m2compatible="true" root="http://download.java.net/maven/2/"
+	   				pattern="[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+	   			<ibiblio name="codehaus" m2compatible="true" root="http://repository.codehaus.org/"
+	   				pattern="[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+			</chain>
+		
+			<!--  for testing  -->
+			<filesystem name="test_repo" m2compatible="true">
+	       		<ivy pattern="${user.home}/repository_test/[organisation]/[module]/[revision]/ivy-[revision](-[classifier]).xml"></ivy>
+	   			<artifact pattern="${user.home}/repository_test/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"></artifact>
+			</filesystem>
+		
+		</chain>
+  
+	</resolvers>
+</ivysettings>

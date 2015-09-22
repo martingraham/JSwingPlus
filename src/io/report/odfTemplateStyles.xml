@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<office:automatic-styles>
+<style:style style:name="JSTableColumn" style:family="table-column">
+<style:table-column-properties style:column-width="1.368in" />
+</style:style>
+<style:style style:name="JSTableCell" style:family="table-cell">
+<style:table-cell-properties fo:border="0.0069in solid #000000" fo:padding-top="0in" fo:padding-left="0.075in" fo:padding-bottom="0in" fo:padding-right="0.075in" />
+</style:style>
+<style:style style:name="JSTableHeader" style:display-name="JSTableHeader" style:family="paragraph">
+<style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold" />
+</style:style>
+<style:style style:name="JSPara" style:display-name="JSPara" style:family="paragraph">
+<style:text-properties fo:hyphenate="false" />
+</style:style>
+<style:style style:family="graphic" style:name="NoFrameWrap">
+<style:graphic-properties fo:border="none" fo:background-color="#ffffff" style:wrap="none" style:horizontal-rel="paragraph" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:vertical-pos="from-top" />
+</style:style> 
+</office:automatic-styles>

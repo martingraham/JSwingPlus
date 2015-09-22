@@ -1,0 +1,12 @@
+@CHARSET "ISO-8859-1";
+H1 { margin: 0px; padding: 0px; border-style:outset; color: #404080; background: #8282e0; text-align: center }
+H4.footer { color: #404080; background: #8282e0; text-align: right; font-weight: none; padding-right: 28px }
+.divborder { background: #8C7A12; }
+BODY {font-family: "Gill Sans MS", "Gill Sans", Tahoma, sans-serif}
+A.close {background: #ff0000; color: #ffffff; font-size: 16px; font-weight: bold; padding: 12px;}
+A {color: #8282e0; text-decoration: none;}
+A.hover {color: #ffffff}
+TABLE.header {margin-top: 5px; margin-left: 20px; margin-right: 20px; margin-bottom: 5px}
+DT { background: #5c5c9c; color: #8282e0; font-size:18px; margin-top: 6px; padding-left: 20px }
+DD { margin-bottom : 12px}
+DL {background: #5c5c9c}

@@ -1,0 +1,50 @@
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+
+	<info organisation="napier" module="JSwingPlus" revision="1.01" status="integration"
+			publication="20120508120000"
+	/>
+	
+ 
+	<configurations>
+  		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime" /> 
+  		<conf name="compile" visibility="public"  description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths." /> 
+  		<conf name="runtime" visibility="public"  description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile" /> 
+  		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime" /> 
+	  	<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any" /> 
+	  	<conf name="master" visibility="public" description="this configuration contains the source artifact of this module, if any" extends="runtime" /> 
+	</configurations>
+	
+	<publications> 
+    	<artifact name="JSwingPlus" type="jar" ext="jar"/> 
+	    <artifact name="JSwingPlus" type="source" ext="jar" m:classifier="sources"/> 	
+	</publications>
+	
+	<dependencies>
+		<!--  conf runtime avoids downloading source files into lib folder on retrieve -->
+		<dependency org="log4j" name="log4j" rev="1.2.15" conf="*->runtime,sources,javadoc,master"/>
+		<dependency org="org.apache.xmlgraphics" name="batik-anim" rev="1.7" transitive="true" conf="*->runtime,sources,javadoc"/>
+		<dependency org="org.apache.xmlgraphics" name="batik-svggen" rev="1.7" conf="*->runtime,sources,javadoc,master"/>
+		<dependency org="org.apache.xmlgraphics" name="batik-transcoder" rev="1.7" conf="*->runtime,sources,javadoc,master"/>
+		<dependency org="org.apache.xmlgraphics" name="batik-codec" rev="1.7" conf="*->runtime,sources,javadoc,master"/>
+					
+		<!--  need to find out why iri-0.8.jar isn't downloading -->
+		<!--  appears to work now, may have just been broadband dropping out causing problems -->
+		<dependency org="com.hp.hpl.jena" name="jena" rev="2.6.3" transitive="true" conf="*->runtime,sources,javadoc,master">
+		</dependency>		
+		
+		<!-- jackson for json parsing -->
+		<dependency org="org.codehaus.jackson" name="jackson-core-asl" rev="1.8.5" conf="*->runtime,sources,javadoc,master"/>
+		<!-- the above should be transitively loaded by the following dependency, except it doesn't grab the sources -->
+		<dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.8.5" transitive="true" conf="*->runtime,sources,javadoc,master"/>
+		
+		<!-- mysql JDBC connector -->
+		<dependency org="mysql" name="mysql-connector-java" rev="5.1.18" conf="*->runtime,sources,javadoc,master"/>
+		
+		
+		<exclude org="com.sun.jmx" module="jmxri"/>
+		<exclude org="com.sun.jdmk" module="jmxtools"/>
+		<exclude org="javax.jms" module="jms"/>
+		<exclude org="javax.activation" module="activation"/>
+		<exclude org="javax.mail" module="mail"/>
+	</dependencies>
+</ivy-module>
